@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/09 16:25:21 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/10 17:16:34 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct	s_point
 	int		x;
 	int		y;
 	int		z;
+	int		px;
+	int		py;
 }				t_point;
 
 char		*ft_read(char **av);
@@ -47,6 +49,8 @@ int			mouse_hook(int button, int x, int y, t_env *init);
 int			key_hook(int keycode, t_env *init);
 int			expose_hook(t_env *init);
 
-void		draw42(void *mlx, void *win, int col, t_point ***tab, int line, int coln);
+void		draw42(t_env init, t_point ***tab, int line, int coln);
+void		drawline(t_env init, t_point ***tab, int line, int coln);
+void		drawcol(t_env init, t_point ***tab, int line, int coln);
 
 #endif

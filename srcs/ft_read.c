@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 16:31:07 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/09 13:44:23 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/10 15:14:22 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ int		ft_countcara(char *str)
 	{
 		while (str[i] == 32 && str[i])
 			i++;
-		j++;
 		while (str[i] != 32 && str[i])
 			i++;
+		j++;
 	}
+	if (str[i - 1] == 32)
+		j--;
 	return (j);
 }
 

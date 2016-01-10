@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/10 18:39:33 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/10 19:18:29 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	draw42(t_env init, t_point ***tab, int line, int coln)
 		j = 0;
 		while (j < coln)
 		{
-			ft_putchar('a');
-			tab[i][j]->px = 350 - 9 * i + (tab[i][j]->x * 20) + (tab[i][j]->z);
-			tab[i][j]->py = 350 + 5 * j + (tab[i][j]->y * 20) + (tab[i][j]->z);
+			tab[i][j]->px = 350 - 9 * i + (tab[i][j]->x * 20);
+			tab[i][j]->py = 350 + 5 * j + (tab[i][j]->y * 20);
 			mlx_pixel_put(init.mlx, init.win, tab[i][j]->px, tab[i][j]->py, 0xff0000);
 			j++;
 		}
@@ -106,10 +105,6 @@ void	drawcol(t_env init, t_point ***tab, int line, int coln)
 			{
 				tt = tab[i][j]->px - tab[i + 1][j]->px;
 				ty = tab[i + 1][j]->py - tab[i][j]->py;
-				ft_putnbr(tt);
-				ft_putchar('-');
-				ft_putnbr(ty);
-				ft_putchar('\n');
 				if (k % (ty/tt) == 0)
 					l++;
 				mlx_pixel_put(init.mlx, init.win, tab[i][j]->px - l, tab[i][j]->py + k, 0xffffff);

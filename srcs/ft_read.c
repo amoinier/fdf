@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 16:31:07 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/08 20:47:39 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/09 13:44:23 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,22 @@ int		ft_countcara(char *str)
 		j++;
 		while (str[i] != 32 && str[i])
 			i++;
+	}
+	return (j);
+}
+
+int		ft_longline(char **str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (j < ft_countcara(str[i]))
+			j = ft_countcara(str[i]);
+		i++;
 	}
 	return (j);
 }

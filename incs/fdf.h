@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/08 20:44:17 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/09 16:25:21 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef	struct	s_env
 	void	*win;
 }				t_env;
 
-typedef struct	point
+typedef struct	s_point
 {
 	int		x;
 	int		y;
@@ -37,8 +37,16 @@ typedef struct	point
 char		*ft_read(char **av);
 int			ft_countcara(char *str);
 int			ft_countnbline(char **s);
+int			ft_longline(char **str);
 int			*ft_toint(char **str, int size);
 
 void		ft_printi(int **tab);
+
+void		draw(void *mlx, void *win, int col);
+int			mouse_hook(int button, int x, int y, t_env *init);
+int			key_hook(int keycode, t_env *init);
+int			expose_hook(t_env *init);
+
+void		draw42(void *mlx, void *win, int col, t_point ***tab, int line, int coln);
 
 #endif

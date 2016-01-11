@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/10 19:18:29 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/11 20:19:46 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,29 @@ void	draw(void *mlx, void *win, int col)
 	}
 }
 
-void	draw42(t_env init, t_point ***tab, int line, int coln)
+void	draw42(t_env *init, t_point ***tab)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < line)
+	while (i < tab[0][0]->sizeline)
 	{
 		j = 0;
-		while (j < coln)
+		while (j < tab[i][0]->sizecol)
 		{
-			tab[i][j]->px = 350 - 9 * i + (tab[i][j]->x * 20);
-			tab[i][j]->py = 350 + 5 * j + (tab[i][j]->y * 20);
-			mlx_pixel_put(init.mlx, init.win, tab[i][j]->px, tab[i][j]->py, 0xff0000);
+			tab[i][j]->px = (50 + (tab[i][j]->x * 20));
+			tab[i][j]->py = (50 + (tab[i][j]->y * 20));
+			mlx_pixel_put(init->mlx, init->win, tab[i][j]->px, tab[i][j]->py, 0xff0000);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	drawline(t_env init, t_point ***tab, int line, int coln)
+#include <stdio.h>
+
+void	drawline(t_env *init, t_point ***tab)
 {
 	int	i;
 	int	j;
@@ -60,20 +62,21 @@ void	drawline(t_env init, t_point ***tab, int line, int coln)
 	int	ty;
 
 	i = 0;
-	while (i < line)
+	while (i < tab[0][0]->sizeline)
 	{
 		j = 0;
-		while (j < coln - 1)
+		while (j < tab[i][0]->sizecol - 1)
 		{
 			k = 0;
 			l = 0;
-			while (tab[i][j + 1]->px != tab[i][j]->px + k)
+			tt = tab[i][j + 1]->px - tab[i][j]->px;
+			ty = tab[i][j + 1]->py - tab[i][j]->py;
+			while (k <= tt && l <= ty)
 			{
-				tt = tab[i][j + 1]->px - tab[i][j]->px;
-				ty = tab[i][j + 1]->py - tab[i][j]->py;
-				if (k % (tt/ty) == 0)
+				if (tt != 0 && ty != 0 && k % (tt/ty) == 0)
 					l++;
-				mlx_pixel_put(init.mlx, init.win, tab[i][j]->px + k, tab[i][j]->py + l, 0xffffff);
+				//printf("%d - %d\n", ty, tt);
+				mlx_pixel_put(init->mlx, init->win, tab[i][j]->px + k, tab[i][j]->py + l, 0xffffff);
 				k++;
 			}
 			j++;
@@ -82,32 +85,31 @@ void	drawline(t_env init, t_point ***tab, int line, int coln)
 	}
 }
 
-#include <stdio.h>
-
-void	drawcol(t_env init, t_point ***tab, int line, int coln)
+void	drawcol(t_env *init, t_point ***tab)
 {
 	int	i;
 	int	j;
 	int	k;
 	int	l;
-	int	 tt;
-	int	 ty;
+	int	tt;
+	int	ty;
 
 	i = 0;
-	while (i < line - 1)
+	while (i < tab[0][0]->sizeline - 1)
 	{
 		j = 0;
-		while (j < coln)
+		while (j < tab[i][0]->sizecol)
 		{
 			k = 0;
 			l = 0;
-			while (tab[i + 1][j]->py != tab[i][j]->py + k)
+			tt = tab[i][j]->px - tab[i + 1][j]->px;
+			ty = tab[i + 1][j]->py - tab[i][j]->py;
+			while (k <= ty && l <= tt)
 			{
-				tt = tab[i][j]->px - tab[i + 1][j]->px;
-				ty = tab[i + 1][j]->py - tab[i][j]->py;
-				if (k % (ty/tt) == 0)
+				if (ty != 0 && tt != 0 && (k % (ty/tt)) == 0)
 					l++;
-				mlx_pixel_put(init.mlx, init.win, tab[i][j]->px - l, tab[i][j]->py + k, 0xffffff);
+//				printf("%d - %d\n", ty, tt);
+				mlx_pixel_put(init->mlx, init->win, tab[i][j]->px - l, tab[i][j]->py + k, 0xffffff);
 				k++;
 			}
 			j++;

@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/11 20:22:15 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/13 20:37:14 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int		main(int ac, char **av)
 		drawline(init, point);
 		drawcol(init, point);
 		mlx_key_hook(init->win, key_hook, init);
-//		mlx_mouse_hook(init.win, mouse_hook, init);
+		mlx_mouse_hook(init->win, mouse_hook, init);
 		mlx_expose_hook(init->win, expose_hook, init);
 		mlx_loop(init->mlx);
 	}

@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 16:31:07 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/13 20:50:04 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/15 09:41:59 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,24 +89,4 @@ int		*ft_toint(char **str, int size)
 		i++;
 	}
 	return (tab);
-}
-
-void		ft_printi(int **tab)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 11)
-	{
-		j = 0;
-		while (j < 19)
-		{
-			ft_putnbr(tab[i][j]);
-			ft_putstr(" ");
-			j++;
-		}
-		ft_putchar('\n');
-		i++;
-	}
 }

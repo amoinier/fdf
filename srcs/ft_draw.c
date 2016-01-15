@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_win.c                                           :+:      :+:    :+:   */
+/*   ft_draw.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/13 20:50:02 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/15 11:04:50 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,6 @@ void	drawline(t_env *init, t_point ***tab)
 	}
 }
 
-int		valab(int i)
-{
-	if (i < 0)
-		return (-i);
-	return (i);
-}
-
 void	drawcol(t_env *init, t_point ***tab)
 {
 	int	i;
@@ -97,10 +90,8 @@ void	drawcol(t_env *init, t_point ***tab)
 	int	l;
 	int	dx;
 	int	dy;
-	int	i$j$k$l$dx$dy;
 
 	i = 0;
-	i$j$k$l$dx$dy = 0;
 	while (i < tab[0][0]->sizeline - 1)
 	{
 		j = 0;
@@ -112,10 +103,8 @@ void	drawcol(t_env *init, t_point ***tab)
 			dy = tab[i + 1][j]->py - tab[i][j]->py;
 			while (k <= dy)
 			{
-				if (dx != dy)
-					l = tab[i][j]->px + ((valab(dx) * k) / dy);
-				else if (dx == dy)
-					l = tab[i][j]->px - ((valab(dx) * k) / dy);
+				l = tab[i][j]->px - ((dx * k) / dy);
+				//printf("%d - %d - %d : %d - %d\n", k, dy, dx, i, j);
 				mlx_pixel_put(init->mlx, init->win, l, tab[i][j]->py + k, 0xffffff);
 				k++;
 			}
@@ -123,26 +112,4 @@ void	drawcol(t_env *init, t_point ***tab)
 		}
 		i++;
 	}
-}
-
-int		mouse_hook(int button, int x, int y, t_env *init)
-{
-	draw(init->mlx, init->win, 0x00FFFF);
-	printf("%d - %d", x, y);
-	button *= 1;
-	return (0);
-}
-
-int		key_hook(int keycode, t_env *init)
-{
-	draw(init->mlx, init->win, 0x00FF00);
-	if (keycode == 53)
-		exit(0);
-	return (0);
-}
-
-int		expose_hook(t_env *init)
-{
-	draw(init->mlx, init->win, 0xFF00FF);
-	return (0);
 }

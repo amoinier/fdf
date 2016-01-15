@@ -6,7 +6,7 @@
 #    By: amoinier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/07 12:02:38 by amoinier          #+#    #+#              #
-#    Updated: 2016/01/07 17:03:25 by amoinier         ###   ########.fr        #
+#    Updated: 2016/01/15 09:25:42 by amoinier         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -42,7 +42,8 @@ all: $(NAME)
 
 $(NAME): header $(OBCC)
 	@echo "  ${BLU}+ Compilation program:${STD} $@"
-	@gcc $(FLAG) $(OBCC) -I./incs/ -L/usr/local/lib/ -I/usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@make -C ./libft/
+	@gcc $(FLAG) $(OBCC) ./libft/libft.a -I./incs/ -L/usr/local/lib/ -I/usr/local/include -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(ODIR)%.o: $(SDIR)%.c
 	@echo "  ${GRE}+ Compilation:${STD} $^"
@@ -68,6 +69,7 @@ clean: header
 
 fclean: clean
 	@echo "  ${RED}- Remove $(NAME)${STD}"
+	@make -C ./libft/ fclean
 	@rm -f $(NAME)
 
 .PHONY: all $(NAME) $(ODIR)%.o header norme clean fclean re

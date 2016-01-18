@@ -6,11 +6,18 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/15 11:02:30 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:11:53 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	ft_draw(t_env *init, int col)
+{
+	draw42(init, init->point, col);
+	drawline(init, init->point, col);
+	drawcol(init, init->point, col);
+}
 
 int		mouse_hook(int button, int x, int y, t_env *init)
 {
@@ -21,14 +28,40 @@ int		mouse_hook(int button, int x, int y, t_env *init)
 	return (0);
 }
 
-int		key_hook(int keycode)
+int		key_hook(int keycode, t_env *init)
 {
+	ft_draw(init, 0x000000);
 	if (keycode == 53)
 		exit(0);
+	if (keycode == 126)
+		init->point[0][0]->movey -= 5;
+	if (keycode == 125)
+		init->point[0][0]->movey += 5;
+	if (keycode == 124)
+		init->point[0][0]->movex += 5;
+	if (keycode == 123)
+		init->point[0][0]->movex -= 5;
+	if (keycode == 13)
+		init->point[0][0]->axey--;
+	if (keycode == 1)
+		init->point[0][0]->axey++;
+	if (keycode == 0)
+		init->point[0][0]->axex--;
+	if (keycode == 2)
+		init->point[0][0]->axex++;
+	if (keycode == 16)
+		init->point[0][0]->axez += 1;
+	if (keycode == 4)
+		init->point[0][0]->axez -= 1;
+	if (keycode == 116)
+		init->point[0][0]->zoom++;
+	if (keycode == 121)
+		init->point[0][0]->zoom--;
+	ft_draw(init, 0xffffff);
 	return (0);
 }
 
-int	expose_hook(t_env *init)
+int		expose_hook(t_env *init)
 {
 	draw(init->mlx, init->win, 0xFF00FF);
 	return (0);

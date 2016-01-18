@@ -6,13 +6,13 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/15 11:00:24 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:38:54 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point     ***ft_init_t_point(int nbline, char **str)
+t_point		***ft_init_t_point(int nbline, char **str)
 {
 	int		i;
 	int		j;
@@ -52,6 +52,10 @@ t_point		*ft_pointnew(int x, int y, int z)
 	point->sizecol = 0;
 	point->movex = 0;
 	point->movey = 0;
+	point->axex = 0;
+	point->axey = 0;
+	point->axez = 0;
+	point->zoom = 1;
 	return (point);
 }
 
@@ -60,28 +64,26 @@ t_point		***ft_createstruct(int *line, int *coln, char **av)
 	char	**str[2];
 	t_point	***point;
 	int		**tab;
-	int		i;
-	int		j;
+	int		ij[2];
 
 	str[0] = ft_strsplit(ft_read(av), '\n');
 	*line = ft_countnbline(str[0]);
 	tab = (int **)malloc(sizeof(tab) * (*line + 1));
 	point = ft_init_t_point(*line, str[0]);
-	i = 0;
-	while (i < *line)
+	ij[0] = -1;
+	while (++ij[0] < *line)
 	{
-		j = 0;
-		*coln = ft_countcara(str[0][i]);
-		str[1] = ft_strsplit(str[0][i], 32);
-		tab[i] = ft_toint(str[1], *coln);
-		while (j < *coln)
+		ij[1] = 0;
+		*coln = ft_countcara(str[0][ij[0]]);
+		str[1] = ft_strsplit(str[0][ij[0]], 32);
+		tab[ij[0]] = ft_toint(str[1], *coln);
+		while (ij[1] < *coln)
 		{
-			point[i][j] = ft_pointnew(j, i, tab[i][j]);
-			point[i][j]->sizecol = *coln;
-			point[i][j]->sizeline = *line;
-			j++;
+			point[ij[0]][ij[1]] = ft_pointnew(ij[1], ij[0], tab[ij[0]][ij[1]]);
+			point[ij[0]][ij[1]]->sizecol = *coln;
+			point[ij[0]][ij[1]]->sizeline = *line;
+			ij[1]++;
 		}
-		i++;
 	}
 	return (point);
 }

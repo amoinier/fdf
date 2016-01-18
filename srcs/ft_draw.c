@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/18 21:37:04 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/18 21:39:18 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ void	drawline(t_env *init, t_point ***tab, int col)
 			while (k <= dx)
 			{
 				//printf("%d : %d - %d\n", tab[i][j]->px, i, j);
-				if (dx == 0)
-					l = (dy * k);
-				else
+				if (dx != 0)
 					l = (dy * k) / dx;
 				mlx_pixel_put(init->mlx, init->win, tab[i][j]->px + k, tab[i][j]->py + l, col);
 				k++;
@@ -108,9 +106,7 @@ void	drawcol(t_env *init, t_point ***tab, int col)
 			dy = tab[i + 1][j]->py - tab[i][j]->py;
 			while (k <= dy)
 			{
-				if (dy == 0)
-					l = (dx * k);
-				else
+				if (dy != 0)
 					l = (dx * k) / dy;
 				//printf("%d - %d - %d : %d - %d\n", k, dy, dx, i, j);
 				mlx_pixel_put(init->mlx, init->win, tab[i][j]->px - l, tab[i][j]->py + k, col);

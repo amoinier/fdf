@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 13:03:05 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:20:42 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include "libft.h"
+# include "get_next_line.h"
 
 # define BUFF_SIZE 500
 
@@ -36,10 +37,23 @@ typedef struct	s_point
 	int		sizecol;
 }				t_point;
 
+typedef	struct	s_img
+{
+	void	*img;
+	int		width;
+	int		height;
+	int		i;
+	int		j;
+}				t_img;
+
 typedef struct  s_env
 {
 	void    *mlx;
 	void    *win;
+	int		width;
+	int		height;
+
+	t_img	img;
 	
 	t_point	***point;
 
@@ -51,11 +65,11 @@ typedef struct  s_env
 	int		zoom;
 }               t_env;
 
-char		*ft_read(char **av);
+char		**ft_read(char **av);
+int			ft_countbn(char *s);
 int			ft_countcara(char *str);
 int			ft_countnbline(char **s);
 int			ft_longline(char **str);
-int			*ft_toint(char **str, int size);
 
 int			mouse_hook(int button, int x, int y, t_env *init);
 int			key_hook(int keycode, t_env *init);

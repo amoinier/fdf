@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 13:08:46 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:11:38 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,11 @@ t_point		***ft_createstruct(int *line, int *coln, char **av)
 {
 	char	**str[2];
 	t_point	***point;
-	int		**tab;
 	int		ij[2];
 
-	str[0] = ft_strsplit(ft_read(av), '\n');
+	str[0] = ft_read(av);
+	//str[0] = ft_strsplit(ft_read(av), '\n');
 	*line = ft_countnbline(str[0]);
-	tab = (int **)malloc(sizeof(tab) * (*line + 1));
 	point = ft_init_t_point(*line, str[0]);
 	ij[0] = -1;
 	while (++ij[0] < *line)
@@ -64,10 +63,9 @@ t_point		***ft_createstruct(int *line, int *coln, char **av)
 		ij[1] = 0;
 		*coln = ft_countcara(str[0][ij[0]]);
 		str[1] = ft_strsplit(str[0][ij[0]], 32);
-		tab[ij[0]] = ft_toint(str[1], *coln);
 		while (ij[1] < *coln)
 		{
-			point[ij[0]][ij[1]] = ft_pointnew(ij[1], ij[0], tab[ij[0]][ij[1]]);
+			point[ij[0]][ij[1]] = ft_pointnew(ij[1], ij[0], ft_atoi(str[1][ij[1]]));
 			point[ij[0]][ij[1]]->sizecol = *coln;
 			point[ij[0]][ij[1]]->sizeline = *line;
 			ij[1]++;

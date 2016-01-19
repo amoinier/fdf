@@ -6,27 +6,47 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 16:31:07 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 12:08:59 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:13:11 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-char	*ft_read(char **av)
+char	**ft_dstrcpy(char **str, int i, char *line)
 {
-	char	*str;
-	char	buf[BUFF_SIZE + 1];
-	int		ret;
-	int		fd;
+	char	**str2;
+	int	x;
 
-	str = ft_strnew(1);
+	x = 0;
+	if (!(str2 = (char **)malloc(sizeof(str2) * (i + 1))))
+		return (NULL);
+	while (x < i)
+	{
+		str2[x] = ft_strdup(str[x]);
+		x++;
+	}
+	str2[x] = ft_strdup(line);
+	return (str2);
+}
+
+char	**ft_read(char **av)
+{
+	int	fd;
+	int	i;
+	char	*line;
+	char	**str;
+
+	i = 0;
+	if (!(str = (char **)malloc(sizeof(str) * 2)))
+		return (NULL);
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		return (NULL);
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+	while (get_next_line(fd, &line))
 	{
-		buf[ret] = '\0';
-		str = ft_strjoin(str, buf);
+		str = ft_dstrcpy(str, i, line);
+		i++;
 	}
+	str = ft_dstrcpy(str, i, line);
 	return (str);
 }
 
@@ -76,17 +96,20 @@ int		ft_countnbline(char **s)
 	return (i);
 }
 
-int		*ft_toint(char **str, int size)
+int		ft_countbn(char *s)
 {
 	int	i;
-	int	*tab;
+	int	nb;
 
 	i = 0;
-	tab = (int *)malloc(sizeof(tab) * (size + 1));
-	while (i < size)
+	nb = 0;;
+	while (s[i])
 	{
-		tab[i] = ft_atoi(str[i]);
+		if (s[i] == '\n')
+		{
+			nb++;
+		}
 		i++;
 	}
-	return (tab);
+	return (nb);
 }

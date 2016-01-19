@@ -6,13 +6,13 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 12:23:32 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 13:11:44 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_draw(t_env *init, int col)
+static	void	ft_draw(t_env *init, int col)
 {
 	draw42(init, init->point, col);
 	drawline(init, init->point, col);

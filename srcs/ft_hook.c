@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/18 21:38:17 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 12:23:32 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,29 @@ int		key_hook(int keycode, t_env *init)
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 126)
-		init->point[0][0]->movey -= 5;
+		init->movey -= 5;
 	if (keycode == 125)
-		init->point[0][0]->movey += 5;
+		init->movey += 5;
 	if (keycode == 124)
-		init->point[0][0]->movex += 5;
+		init->movex += 5;
 	if (keycode == 123)
-		init->point[0][0]->movex -= 5;
+		init->movex -= 5;
 	if (keycode == 13)
-		init->point[0][0]->axey--;
+		init->axey--;
 	if (keycode == 1)
-		init->point[0][0]->axey++;
+		init->axey++;
 	if (keycode == 0)
-		init->point[0][0]->axex--;
+		init->axex--;
 	if (keycode == 2)
-		init->point[0][0]->axex++;
+		init->axex++;
 	if (keycode == 16)
-		init->point[0][0]->axez += 1;
+		init->axez += 1;
 	if (keycode == 4)
-		init->point[0][0]->axez -= 1;
+		init->axez -= 1;
 	if (keycode == 116)
-		init->point[0][0]->zoom++;
+		init->zoom++;
 	if (keycode == 121)
-		init->point[0][0]->zoom--;
+		init->zoom--;
 	ft_draw(init, 0xffffff);
 	return (0);
 }

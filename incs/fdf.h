@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/18 20:10:38 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 13:03:05 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <sys/types.h>
 # include "libft.h"
 
+# define BUFF_SIZE 500
+
 typedef struct	s_point
 {
 	int		x;
@@ -32,22 +34,21 @@ typedef struct	s_point
 
 	int		sizeline;
 	int		sizecol;
-
-	int		movex;
-	int		movey;
-
-	int		axex;
-	int		axey;
-	int		axez;
-
-	int		zoom;
 }				t_point;
 
 typedef struct  s_env
 {
 	void    *mlx;
 	void    *win;
+	
 	t_point	***point;
+
+	int		movex;
+	int		movey;
+	int		axex;
+	int		axey;
+	int		axez;
+	int		zoom;
 }               t_env;
 
 char		*ft_read(char **av);

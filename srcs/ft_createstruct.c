@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/18 20:38:54 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 13:08:46 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_point		***ft_init_t_point(int nbline, char **str)
 {
 	int		i;
-	int		j;
 	int		lline;
 	t_point	***tab;
 
@@ -25,13 +24,8 @@ t_point		***ft_init_t_point(int nbline, char **str)
 		return (NULL);
 	while (i <= nbline)
 	{
-		j = 0;
-		tab[i] = (t_point **)malloc(sizeof(tab[i]) * (lline + 1));
-		while (j <= lline)
-		{
-			tab[i][j] = NULL;
-			j++;
-		}
+		if (!(tab[i] = (t_point **)malloc(sizeof(tab[i]) * (lline + 1))))
+			return (NULL);
 		i++;
 	}
 	return (tab);
@@ -50,12 +44,6 @@ t_point		*ft_pointnew(int x, int y, int z)
 	point->py = 0;
 	point->sizeline = 0;
 	point->sizecol = 0;
-	point->movex = 0;
-	point->movey = 0;
-	point->axex = 0;
-	point->axey = 0;
-	point->axez = 0;
-	point->zoom = 1;
 	return (point);
 }
 

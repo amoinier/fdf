@@ -6,11 +6,21 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/18 20:42:05 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 12:29:56 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	ft_initenv(t_env *init)
+{
+	init->movex = 0;
+	init->movey = 0;
+	init->axex = 0;
+	init->axey = 0;
+	init->axez = 0;
+	init->zoom = 1;
+}
 
 int		main(int ac, char **av)
 {
@@ -22,10 +32,12 @@ int		main(int ac, char **av)
 	{
 		line = 0;
 		coln = 0;
-		init = (t_env *)malloc(sizeof(*init));
+		if (!(init = (t_env *)malloc(sizeof(*init))))
+			return (0);
 		init->mlx = mlx_init();
 		init->win = mlx_new_window(init->mlx, 1000, 1000, "JMAIQUEZ <3");
 		init->point = ft_createstruct(&line, &coln, av);
+		ft_initenv(init);
 		mlx_key_hook(init->win, key_hook, init);
 		mlx_do_key_autorepeaton(init->mlx);
 		mlx_mouse_hook(init->win, mouse_hook, init);

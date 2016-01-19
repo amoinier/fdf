@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/18 21:39:18 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 12:26:04 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	draw42(t_env *init, t_point ***tab, int col)
 		j = 0;
 		while (j < tab[i][0]->sizecol)
 		{
-			tab[i][j]->px = (300 + tab[0][0]->axex * i + (tab[i][j]->x * tab[0][0]->zoom) - (tab[i][j]->z * tab[0][0]->axez) + tab[0][0]->movex);
-			tab[i][j]->py = (300 + tab[0][0]->axey * j + (tab[i][j]->y * tab[0][0]->zoom) - (tab[i][j]->z * tab[0][0]->axez) + tab[0][0]->movey);
+			tab[i][j]->px = (300 + init->axex * i + (tab[i][j]->x * init->zoom) - ((tab[i][j]->z * init->axez) / 10) + init->movex);
+			tab[i][j]->py = (300 + init->axey * j + (tab[i][j]->y * init->zoom) - ((tab[i][j]->z * init->axez) / 10) + init->movey);
 			mlx_pixel_put(init->mlx, init->win, tab[i][j]->px, tab[i][j]->py, col);
 			j++;
 		}
@@ -73,7 +73,6 @@ void	drawline(t_env *init, t_point ***tab, int col)
 			//printf("%d - %d\n", dx, dy);
 			while (k <= dx)
 			{
-				//printf("%d : %d - %d\n", tab[i][j]->px, i, j);
 				if (dx != 0)
 					l = (dy * k) / dx;
 				mlx_pixel_put(init->mlx, init->win, tab[i][j]->px + k, tab[i][j]->py + l, col);

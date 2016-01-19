@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 16:31:07 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/15 09:41:59 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 12:08:59 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 char	*ft_read(char **av)
 {
 	char	*str;
-	char	buf[32];
+	char	buf[BUFF_SIZE + 1];
 	int		ret;
 	int		fd;
 
 	str = ft_strnew(1);
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		return (NULL);
-	while ((ret = read(fd, buf, 32)) > 0)
+	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
 		str = ft_strjoin(str, buf);

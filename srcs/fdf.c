@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 18:55:19 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 20:17:36 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,35 @@ void	ft_initenv(t_env *init)
 	init->axez = 10;
 	init->zoom = 1;
 	init->img->img = mlx_new_image(init->mlx, init->width, init->height);
+	init->img->bpp = 0;
+	init->img->sizel = 0;
+	init->img->endian = 0;
 	init->img->cimg = mlx_get_data_addr(init->img->img, &init->img->bpp, &init->img->sizel, &init->img->endian);
-	ft_putstr(init->img->cimg);
 }
 
-void	mlx_pxl_img()
+void   pixel_put_image(char *data, int sizeline, int bpp, int x, int y)
 {
+	int	i;
 
+	i = 0;
+	y *= 1;
+	bpp *= 1;
+	sizeline *= 1;
+	while (i < 50)
+	{
+		data[x * i] = 10;
+		i++;
+	}
 }
+
+#include <stdio.h>
 
 int		main(int ac, char **av)
 {
 	t_env	*init;
 	int		line;
 	int		coln;
+	int	x;
 
 	if (ac == 2)
 	{
@@ -50,7 +65,13 @@ int		main(int ac, char **av)
 		ft_initenv(init);
 		init->win = mlx_new_window(init->mlx, init->width, init->height, "JMAIQUEZ <3");
 		init->point = ft_createstruct(&line, &coln, av);
-		mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
+		x = 0;
+		while (x < 100)
+		{
+			pixel_put_image(init->img->cimg, init->img->sizel, 1, x, x);
+			x++;
+		}
+		mlx_put_image_to_window(init->mlx, init->win, init->img->img, 300, 300);
 		mlx_hook(init->win, 2, 0, key_hook, init);
 		mlx_mouse_hook(init->win, mouse_hook, init);
 		mlx_expose_hook(init->win, expose_hook, init);

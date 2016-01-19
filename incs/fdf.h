@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 16:20:42 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:58:33 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ typedef struct	s_point
 typedef	struct	s_img
 {
 	void	*img;
-	int		width;
-	int		height;
-	int		i;
-	int		j;
+	char	*cimg;
+	int		bpp;
+	int		sizel;
+	int		endian;
 }				t_img;
 
 typedef struct  s_env
@@ -53,7 +53,7 @@ typedef struct  s_env
 	int		width;
 	int		height;
 
-	t_img	img;
+	t_img	*img;
 	
 	t_point	***point;
 

@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 16:11:49 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/19 18:58:16 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void	draw42(t_env *init, t_point ***tab, int col)
 		j = 0;
 		while (j < tab[i][0]->sizecol)
 		{
-			tab[i][j]->px = (300 + init->axex * i + (tab[i][j]->x * init->zoom) - ((tab[i][j]->z * init->axez) / 10) + init->movex);
-			tab[i][j]->py = (300 + init->axey * j + (tab[i][j]->y * init->zoom) - ((tab[i][j]->z * init->axez) / 10) + init->movey);
+			tab[i][j]->px = (init->axex * i + (tab[i][j]->x * init->zoom));
+			tab[i][j]->px -= ((tab[i][j]->z * init->axez) / 10) - init->movex;
+			tab[i][j]->py = (init->axey * j + (tab[i][j]->y * init->zoom));
+			tab[i][j]->py -= ((tab[i][j]->z * init->axez) / 10) - init->movey;
 			mlx_pixel_put(init->mlx, init->win, tab[i][j]->px, tab[i][j]->py, col);
 			j++;
 		}

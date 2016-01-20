@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 19:07:40 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/20 16:26:30 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ void		draw(void *mlx, void *win, int col);
 void		draw42(t_env *init, t_point ***tab, int col);
 void		drawline(t_env *init, t_point ***tab, int col);
 void		drawcol(t_env *init, t_point ***tab, int col);
+
+void		pixel_put_image(t_env *init, int x, int y, int color);
 
 #endif

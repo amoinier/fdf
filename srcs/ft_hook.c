@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 13:11:44 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/20 17:06:41 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		mouse_hook(int button, int x, int y, t_env *init)
 
 int		key_hook(int keycode, t_env *init)
 {
+	//mlx_destroy_image(init->mlx, init->img->img);
 	ft_draw(init, 0x000000);
 	if (keycode == 53)
 		exit(0);
@@ -58,6 +59,7 @@ int		key_hook(int keycode, t_env *init)
 	if (keycode == 121)
 		init->zoom--;
 	ft_draw(init, 0xffffff);
+	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 1, 1);
 	return (0);
 }
 

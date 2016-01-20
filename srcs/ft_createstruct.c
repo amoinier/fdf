@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 16:11:38 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/20 17:01:27 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ t_point		***ft_createstruct(int *line, int *coln, char **av)
 	int		ij[2];
 
 	str[0] = ft_read(av);
-	//str[0] = ft_strsplit(ft_read(av), '\n');
 	*line = ft_countnbline(str[0]);
 	point = ft_init_t_point(*line, str[0]);
 	ij[0] = -1;

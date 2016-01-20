@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/19 20:17:36 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/20 17:01:55 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_initenv(t_env *init)
 {
 	if (!(init->img = (t_img *)malloc(sizeof(*init->img))))
 		return ;
-	init->width = 1000;
-	init->height = 1000;
+	init->width = 2000;
+	init->height = 2000;
 	init->movex = 0;
 	init->movey = 0;
 	init->axex = 0;
@@ -31,29 +31,35 @@ void	ft_initenv(t_env *init)
 	init->img->cimg = mlx_get_data_addr(init->img->img, &init->img->bpp, &init->img->sizel, &init->img->endian);
 }
 
-void   pixel_put_image(char *data, int sizeline, int bpp, int x, int y)
+void   pixel_put_image(t_env *init, int x, int y, int color)
 {
-	int	i;
+	int		i;
+	int 	bpp;
+	int		sizeline;
+	char	*data;
 
-	i = 0;
-	y *= 1;
-	bpp *= 1;
-	sizeline *= 1;
-	while (i < 50)
+	bpp = init->img->bpp;
+	sizeline = init->img->sizel;
+	data = init->img->cimg;
+	if  (x < init->width && x < init->height && y < init->width && y < init->height && x > 0 && y > 0)
 	{
-		data[x * i] = 10;
-		i++;
+		i = x * (bpp / 8) + y * sizeline;
+		data[i] = color % 256;
+		color /= 256;
+		data[i + 1] = color % 256;
+		color /= 256;
+		data[i + 2] = color % 256;
+		color /= 256;
+		data[i + 3] = 0;
+		color /= 256;
 	}
 }
-
-#include <stdio.h>
 
 int		main(int ac, char **av)
 {
 	t_env	*init;
 	int		line;
 	int		coln;
-	int	x;
 
 	if (ac == 2)
 	{
@@ -65,13 +71,6 @@ int		main(int ac, char **av)
 		ft_initenv(init);
 		init->win = mlx_new_window(init->mlx, init->width, init->height, "JMAIQUEZ <3");
 		init->point = ft_createstruct(&line, &coln, av);
-		x = 0;
-		while (x < 100)
-		{
-			pixel_put_image(init->img->cimg, init->img->sizel, 1, x, x);
-			x++;
-		}
-		mlx_put_image_to_window(init->mlx, init->win, init->img->img, 300, 300);
 		mlx_hook(init->win, 2, 0, key_hook, init);
 		mlx_mouse_hook(init->win, mouse_hook, init);
 		mlx_expose_hook(init->win, expose_hook, init);

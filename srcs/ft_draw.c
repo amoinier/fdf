@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/20 19:39:27 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/21 11:32:04 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw42(t_env *init, t_point ***tab, int col)
 			tab[i][j]->py = (init->axey * j + (tab[i][j]->y * init->zoom));
 			tab[i][j]->py -= ((tab[i][j]->z * init->axez) / 10) - init->movey;
 			if (col != 0x000000)
-				col = 16777215 - ((tab[i][j]->z * init->axez));
+				col = 0xffffff - ((tab[i][j]->z * init->axez));
 			pixel_put_image(init, tab[i][j]->px, tab[i][j]->py, col);
 			j++;
 		}
@@ -61,7 +61,7 @@ void	drawline(t_env *init, t_point ***tab, int col)
 				if (dx != 0)
 					l = (dy * k) / dx;
 				if (col != 0x000000)
-					col = 16777215 - ((tab[i][j]->z * init->axez));
+					col = 0xffffff - ((tab[i][j]->z * init->axez));
 				pixel_put_image(init, tab[i][j]->px + k, tab[i][j]->py + l, col);
 				k++;
 			}
@@ -95,7 +95,7 @@ void	drawcol(t_env *init, t_point ***tab, int col)
 				if (dy != 0)
 					l = (dx * k) / dy;
 				if (col != 0x000000)
-					col = 16777215 - ((tab[i][j]->z * init->axez));
+					col = 0xffffff - ((tab[i][j]->z * init->axez));
 				pixel_put_image(init, tab[i][j]->px - l, tab[i][j]->py + k, col);
 				k++;
 			}

@@ -5,61 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 16:19:12 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/06 16:41:52 by amoinier         ###   ########.fr       */
+/*   Created: 2016/01/21 11:37:15 by amoinier          #+#    #+#             */
+/*   Updated: 2016/01/21 13:07:59 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static	char	*ft_cleanstr(const char *str, char c)
-{
-	size_t	i;
-	size_t	j;
-	char	*s;
-
-	i = 0;
-	j = 0;
-	if (!str || !c)
-		return (NULL);
-	s = (char *)malloc(sizeof(s) * ft_strlen(str) + 1);
-	if (!s)
-		return (NULL);
-	while (str[i] == c)
-		i++;
-	while (str[i])
-	{
-		s[j] = str[i];
-		i++;
-		j++;
-	}
-	s[j] = '\0';
-	return (s);
-}
-
-static	char	*ft_cleanstrend(const char *str, char c)
-{
-	size_t	i;
-	size_t	j;
-	char	*s;
-
-	i = 0;
-	j = 0;
-	if (!str || !c)
-		return (NULL);
-	s = (char *)malloc(sizeof(s) * ft_strlen(str) + 1);
-	if (!s)
-		return (NULL);
-	while (str[ft_strlen(str) - i - 1] == c)
-		i++;
-	while (j < ft_strlen(str) - i)
-	{
-		s[j] = str[j];
-		j++;
-	}
-	s[j] = '\0';
-	return (s);
-}
 
 static	int		ft_count_words(const char *str, char c)
 {
@@ -76,56 +27,49 @@ static	int		ft_count_words(const char *str, char c)
 			word++;
 		i++;
 	}
+	if (word == 0 && str[0] != '\0')
+		word++;
 	return (word);
 }
 
-static	char	**ft_dotab(char *tmp, char **s, char c)
+static	char	**ft_sendword(int i, char **s, const char *str, char c)
 {
-	int	j;
-	int	w;
-	int	i;
+	int		k;
+	int		j;
+	int		wrd;
 
-	i = 0;
-	w = 0;
-	while (w <= ft_count_words(tmp, c))
+	wrd = ft_count_words(str, c);
+	j = 0;
+	while (j < wrd && str[i])
 	{
-		j = 0;
-		s[w] = (char *)malloc(sizeof(s[w]) * ft_strlen(tmp) + 1);
-		if (!s[w])
+		if (!(s[j] = (char *)malloc(sizeof(s) * ft_strlen(str))))
 			return (NULL);
-		while (tmp[i] != c && tmp[i] != '\0')
-			s[w][j++] = tmp[i++];
-		s[w][j] = '\0';
-		while (tmp[i] == c)
+		k = 0;
+		while (str[i] != c && str[i])
+		{
+			s[j][k] = str[i];
+			k++;
 			i++;
-		w++;
+		}
+		s[j][k] = '\0';
+		while (str[i] == c && str[i])
+			i += 1;
+		j++;
 	}
-	s[w] = 0;
+	s[j] = NULL;
 	return (s);
 }
 
-char			**ft_strsplit(char const *str, char c)
+char			**ft_strsplit(const char *str, char c)
 {
-	char	*tmp;
+	int		i;
 	char	**s;
 
-	s = (char **)malloc(sizeof(s) * ft_count_words(str, c) + 1);
-	if (!s)
-	{
-		s[0] = NULL;
-		return (s);
-	}
-	s[0] = NULL;
-	if (!str || !c)
-		return (s);
-	tmp = (char *)malloc(sizeof(tmp) * ft_strlen(str) + 1);
-	if (!tmp)
-		return (s);
-	tmp = ft_cleanstrend(ft_cleanstr(str, c), c);
-	if (tmp[0] == '\0')
-		return (s);
-	s = ft_dotab(tmp, s, c);
-	free(tmp);
-	tmp = NULL;
+	i = 0;
+	if (!(s = (char **)malloc(sizeof(s) * (ft_count_words(str, c) + 1))))
+		return (NULL);
+	while (str[i] == c && str[i])
+		i++;
+	s = ft_sendword(i, s, str, c);
 	return (s);
 }

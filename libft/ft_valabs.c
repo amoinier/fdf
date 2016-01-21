@@ -6,13 +6,13 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 16:02:53 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/14 16:03:18 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/21 12:00:56 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_valabs(int i)
 {
-	if	(i < 0)
+	if (i < 0)
 		return (-i);
 	else
 		return (i);

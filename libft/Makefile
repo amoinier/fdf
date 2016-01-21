@@ -6,7 +6,7 @@
 #    By: amoinier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 11:25:20 by amoinier          #+#    #+#              #
-#    Updated: 2016/01/14 16:14:25 by amoinier         ###   ########.fr        #
+#    Updated: 2016/01/03 17:28:58 by amoinier         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -74,8 +74,7 @@ SRC = 		ft_memcmp.c		\
 			ft_strtrimall.c	\
 			ft_freedtab.c	\
 			ft_power.c		\
-			ft_sqrt.c		\
-			ft_valabs.c
+			ft_sqrt.c
 
 HDR = libft.h
 

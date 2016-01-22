@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 11:37:15 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/21 13:07:59 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 16:28:11 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static	char	**ft_sendword(int i, char **s, const char *str, char c)
 
 	wrd = ft_count_words(str, c);
 	j = 0;
-	while (j < wrd && str[i])
+	while (j <= wrd && str[i])
 	{
 		if (!(s[j] = (char *)malloc(sizeof(s) * ft_strlen(str))))
 			return (NULL);
@@ -52,7 +52,7 @@ static	char	**ft_sendword(int i, char **s, const char *str, char c)
 			i++;
 		}
 		s[j][k] = '\0';
-		while (str[i] == c && str[i])
+		while (str[i] == c && str[i] != '\0')
 			i += 1;
 		j++;
 	}

@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/22 14:36:35 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 21:10:25 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,8 @@ static	void	ft_clear_img(t_env *init)
 	init->img->cimg = ft_memset(init->img->cimg, 0, off_y);
 }
 
-int				mouse_hook(int button, int x, int y, t_env *init)
+static	void	keypad(int keycode, t_env *init)
 {
-	init->zoom *= 1;
-	button *= 1;
-	x *= 1;
-	y *= 1;
-	return (0);
-}
-
-int				key_hook(int keycode, t_env *init)
-{
-	ft_clear_img(init);
-	if (keycode == 53)
-		exit(0);
 	if (keycode == 126)
 		init->movey -= 5;
 	if (keycode == 125)
@@ -49,6 +37,14 @@ int				key_hook(int keycode, t_env *init)
 		init->movex += 5;
 	if (keycode == 123)
 		init->movex -= 5;
+}
+
+int				key_hook(int keycode, t_env *init)
+{
+	ft_clear_img(init);
+	keypad(keycode, init);
+	if (keycode == 53)
+		exit(0);
 	if (keycode == 13)
 		init->axey--;
 	if (keycode == 1)
@@ -67,11 +63,5 @@ int				key_hook(int keycode, t_env *init)
 		init->zoom--;
 	ft_draw(init, 0xffffff);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 1, 1);
-	return (0);
-}
-
-int				expose_hook(t_env *init)
-{
-	init->zoom *= 1;
 	return (0);
 }

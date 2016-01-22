@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/22 14:58:27 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 21:16:05 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,16 @@ int			mouse_hook(int button, int x, int y, t_env *init);
 int			key_hook(int keycode, t_env *init);
 int			expose_hook(t_env *init);
 
-t_point		***ft_init_t_point(int nbline, char **str);
-t_point		*ft_pointnew(int x, int y, int z);
-t_point		***ft_createstruct(int *line, int *coln, char **av);
+t_point		*ft_pointnew(int x, int y, int z, int coln);
+t_point		***ft_createstruct(char **av);
+t_point		**init_point(char *line, int j);
 
 void		draw42(t_env *init, t_point ***tab, int col);
 void		drawline(t_env *init, t_point ***tab, int col);
 void		drawcol(t_env *init, t_point ***tab, int col);
+
+void		line(t_env *init, t_point **tab, int j, int col);
+void		column(t_env *init, t_point ***tab, int ij[2], int col);
 
 void		pixel_put_image(t_env *init, int x, int y, int color);
 

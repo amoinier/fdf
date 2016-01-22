@@ -6,32 +6,13 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/22 16:48:33 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 21:19:47 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point		***ft_init_t_point(int nbline, char **str)
-{
-	int		i;
-	int		lline;
-	t_point	***tab;
-
-	lline = ft_longline(str);
-	i = 0;
-	if (!(tab = (t_point ***)malloc(sizeof(tab) * (nbline + 1))))
-		return (NULL);
-	while (i <= nbline)
-	{
-		if (!(tab[i] = (t_point **)malloc(sizeof(tab[i]) * (lline + 1))))
-			return (NULL);
-		i++;
-	}
-	return (tab);
-}
-
-t_point		*ft_pointnew(int x, int y, int z)
+t_point	*ft_pointnew(int x, int y, int z, int coln)
 {
 	t_point	*point;
 
@@ -43,38 +24,26 @@ t_point		*ft_pointnew(int x, int y, int z)
 	point->px = 0;
 	point->py = 0;
 	point->sizeline = 0;
-	point->sizecol = 0;
+	point->sizecol = coln;
 	return (point);
 }
 
-t_point		***ft_createstruct(int *line, int *coln, char **av)
+t_point	**init_point(char *line, int j)
 {
-	char	**str[2];
-	t_point	***point;
-	int		ij[2];
-	int		z;
+	int		i;
+	int		coln;
+	char	**s;
+	t_point	**point;
 
-	str[0] = ft_read(av);
-	*line = ft_countnbline(str[0]);
-	point = ft_init_t_point(*line, str[0]);
-	ij[0] = 0;
-	while (ij[0] < *line)
+	i = 0;
+	coln = ft_countcara(line);
+	s = ft_strsplit(line, 32);
+	point = (t_point **)malloc(sizeof(*point) * (coln + 1));
+	while (i < coln)
 	{
-		ij[1] = 0;
-		*coln = ft_countcara(str[0][ij[0]]);
-		str[1] = ft_strsplit(str[0][ij[0]], ' ');
-		while (ij[1] < *coln)
-		{
-			z = ft_atoi(str[1][ij[1]]);
-			point[ij[0]][ij[1]] = ft_pointnew(ij[1], ij[0], z);
-			if (ij[1] == 0)
-			{
-				point[ij[0]][ij[1]]->sizecol = *coln;
-				point[ij[0]][ij[1]]->sizeline = *line;
-			}
-			ij[1]++;
-		}
-		ij[0]++;
+		point[i] = ft_pointnew(i, j, ft_atoi(s[i]), coln);
+		i++;
 	}
+	point[i] = NULL;
 	return (point);
 }

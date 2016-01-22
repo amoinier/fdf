@@ -6,46 +6,54 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 14:40:48 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/22 16:01:08 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 21:22:01 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static	char	**ft_dstrcpy(char **str, int i, char *line)
+static	t_point		***ft_realloc(t_point ***p, int nline)
 {
-	char	**str2;
-	int		x;
+	t_point	***tmp;
+	int		i;
+	int		j;
 
-	x = 0;
-	if (!(str2 = (char **)malloc(sizeof(str2) * (i + 1))))
-		return (NULL);
-	while (x < i)
+	i = 0;
+	j = 0;
+	tmp = (t_point ***)malloc(sizeof(tmp) * nline);
+	while (i != nline)
 	{
-		str2[x] = ft_strdup(str[x]);
-		x++;
+		tmp[i] = p[i];
+		i++;
 	}
-	str2[x] = ft_strdup(line);
-	return (str2);
+	free(p);
+	p = (t_point ***)malloc(sizeof(p) * (nline + 1));
+	while (j != nline)
+	{
+		p[j] = tmp[j];
+		j++;
+	}
+	free(tmp);
+	return (p);
 }
 
-char			**ft_read(char **av)
+t_point				***ft_createstruct(char **av)
 {
+	t_point	***point;
 	int		fd;
 	int		i;
 	char	*line;
-	char	**str;
 
 	i = 0;
-	if (!(str = (char **)malloc(sizeof(str) * 2)))
-		return (NULL);
+	point = (t_point ***)malloc(sizeof(point) * 1);
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		return (NULL);
 	while (get_next_line(fd, &line))
 	{
-		str = ft_dstrcpy(str, i, line);
+		point[i] = init_point(line, i);
+		point = ft_realloc(point, i + 1);
 		i++;
 	}
-	str = ft_dstrcpy(str, i, line);
-	return (str);
+	point[0][0]->sizeline = i;
+	return (point);
 }

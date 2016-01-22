@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/22 15:53:54 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 21:08:08 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,8 @@ int		main(int ac, char **av)
 		init->mlx = mlx_init();
 		ft_initenv(init);
 		init->win = mlx_new_window(init->mlx, init->width, init->height, "fdf");
-		init->point = ft_createstruct(&line, &coln, av);
+		init->point = ft_createstruct(av);
 		mlx_hook(init->win, 2, 0, key_hook, init);
-		mlx_mouse_hook(init->win, mouse_hook, init);
-		mlx_expose_hook(init->win, expose_hook, init);
 		mlx_loop(init->mlx);
 	}
 	return (0);

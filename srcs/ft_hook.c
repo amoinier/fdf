@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/20 19:39:09 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 14:36:35 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,15 @@ static	void	ft_draw(t_env *init, int col)
 	drawcol(init, init->point, col);
 }
 
-int		mouse_hook(int button, int x, int y, t_env *init)
+static	void	ft_clear_img(t_env *init)
+{
+	int		off_y;
+
+	off_y = init->width * init->height * 4 - 1;
+	init->img->cimg = ft_memset(init->img->cimg, 0, off_y);
+}
+
+int				mouse_hook(int button, int x, int y, t_env *init)
 {
 	init->zoom *= 1;
 	button *= 1;
@@ -28,10 +36,9 @@ int		mouse_hook(int button, int x, int y, t_env *init)
 	return (0);
 }
 
-int		key_hook(int keycode, t_env *init)
+int				key_hook(int keycode, t_env *init)
 {
-	//mlx_destroy_image(init->mlx, init->img->img);
-	ft_draw(init, 0x000000);
+	ft_clear_img(init);
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 126)
@@ -63,7 +70,7 @@ int		key_hook(int keycode, t_env *init)
 	return (0);
 }
 
-int		expose_hook(t_env *init)
+int				expose_hook(t_env *init)
 {
 	init->zoom *= 1;
 	return (0);

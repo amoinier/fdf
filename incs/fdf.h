@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/20 19:39:31 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 14:58:27 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef	struct	s_img
 	char	*cimg;
 	int		bpp;
 	int		sizel;
-	int		endian;
+	int		endn;
 }				t_img;
 
 typedef struct  s_env

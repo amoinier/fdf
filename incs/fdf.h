@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/22 21:16:05 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/23 12:34:00 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,7 @@ t_point		*ft_pointnew(int x, int y, int z, int coln);
 t_point		***ft_createstruct(char **av);
 t_point		**init_point(char *line, int j);
 
-void		draw42(t_env *init, t_point ***tab, int col);
-void		drawline(t_env *init, t_point ***tab, int col);
-void		drawcol(t_env *init, t_point ***tab, int col);
+void		draw(t_env *init, t_point ***tab, int col);
 
 void		line(t_env *init, t_point **tab, int j, int col);
 void		column(t_env *init, t_point ***tab, int ij[2], int col);

@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/22 21:10:25 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/23 12:33:57 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 static	void	ft_draw(t_env *init, int col)
 {
-	draw42(init, init->point, col);
-	drawline(init, init->point, col);
-	drawcol(init, init->point, col);
+	draw(init, init->point, col);
 }
 
 static	void	ft_clear_img(t_env *init)

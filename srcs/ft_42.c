@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 21:12:40 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/24 15:04:54 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/24 15:58:38 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	drawcol(t_env *init, t_point ***tab, int ij[2], int col)
 	
 	i = ij[0];
 	j = ij[1];
-	if (tab[i + 1][j])
-		column(init, tab,ij, col);
+	column(init, tab,ij, col);
 }
 
 void	drawline(t_env *init, t_point ***tab, int ij[2], int col)
@@ -57,11 +56,12 @@ void	draw(t_env *init, t_point ***tab, int col)
 				drawline(init, tab, ij, col);
 				ij[1]++;
 			}
-			if (i > 0)
+			if (i > 0 && j < tab[i - 1][0]->sizecol)
 			{
 				ij[0]--;
 				drawcol(init, tab, ij, col);
 			}
+			
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/23 12:34:00 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/23 15:03:37 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ void		line(t_env *init, t_point **tab, int j, int col);
 void		column(t_env *init, t_point ***tab, int ij[2], int col);
 
 void		pixel_put_image(t_env *init, int x, int y, int color);
+
+int			error(void);
 
 #endif

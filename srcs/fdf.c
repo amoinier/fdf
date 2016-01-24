@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/22 21:08:08 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/23 15:08:04 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_img	*ft_init_img(t_env *init)
 	t_img	*img;
 
 	if (!(img = (t_img *)malloc(sizeof(*img))))
-		return (NULL);
+		error();
 	img->img = mlx_new_image(init->mlx, init->width, init->height);
 	img->bpp = 0;
 	img->sizel = 0;
@@ -75,11 +75,11 @@ int		main(int ac, char **av)
 		line = 0;
 		coln = 0;
 		if (!(init = (t_env *)malloc(sizeof(*init))))
-			return (0);
+			error();
 		init->mlx = mlx_init();
 		ft_initenv(init);
-		init->win = mlx_new_window(init->mlx, init->width, init->height, "fdf");
 		init->point = ft_createstruct(av);
+		init->win = mlx_new_window(init->mlx, init->width, init->height, "fdf");
 		mlx_hook(init->win, 2, 0, key_hook, init);
 		mlx_loop(init->mlx);
 	}

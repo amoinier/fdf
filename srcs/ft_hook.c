@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/23 12:33:57 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/23 15:11:24 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ static	void	keypad(int keycode, t_env *init)
 
 int				key_hook(int keycode, t_env *init)
 {
+	if (keycode == 53)
+	{
+		mlx_destroy_image(init->mlx, init->img->img);
+		exit(0);
+	}
 	ft_clear_img(init);
 	keypad(keycode, init);
-	if (keycode == 53)
-		exit(0);
 	if (keycode == 13)
 		init->axey--;
 	if (keycode == 1)

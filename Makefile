@@ -6,7 +6,7 @@
 #    By: amoinier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/07 12:02:38 by amoinier          #+#    #+#              #
-#    Updated: 2016/01/15 09:25:42 by amoinier         ###   ########.fr        #
+#    Updated: 2016/01/23 15:01:57 by amoinier         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -50,7 +50,6 @@ $(ODIR)%.o: $(SDIR)%.c
 	@gcc $^ $(FLAG) -c -o $@
 
 header:
-	@clear
 	@mkdir -p $(ODIR)
 	@echo "${YEL}"
 	@echo "PROJET"

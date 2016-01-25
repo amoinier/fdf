@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 21:12:40 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/24 20:07:36 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/25 19:50:00 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void			draw(t_env *init, t_point ***tab, int col)
 		while (j < tab[i][0]->sizecol)
 		{
 			tab[i][j]->px = (init->axex + (tab[i][j]->x * init->zoom));
-			tab[i][j]->px -= ((tab[i][j]->z * init->axez)) - init->movex;
+			tab[i][j]->px -= ((tab[i][j]->z * init->axez) / 10) - init->movex + 9 * i;
 			tab[i][j]->py = (init->axey + (tab[i][j]->y * init->zoom));
-			tab[i][j]->py -= ((tab[i][j]->z * init->axez)) - init->movey;
+			tab[i][j]->py -= ((tab[i][j]->z * init->axez) / 10) - init->movey + 5 * j;
 			ij[0] = i;
 			ij[1] = j;
 			if (j > 0)

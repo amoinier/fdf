@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/24 19:59:41 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/25 19:29:08 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,20 @@ void	pixel_put_image(t_env *init, int x, int y, int color)
 int		main(int ac, char **av)
 {
 	t_env	*init;
-	int		line;
-	int		coln;
 
 	if (ac == 2)
 	{
-		line = 0;
-		coln = 0;
 		if (!(init = (t_env *)malloc(sizeof(*init))))
 			error();
+		init->point = ft_createstruct(av);
 		init->mlx = mlx_init();
 		ft_initenv(init);
-		init->point = ft_createstruct(av);
 		init->win = mlx_new_window(init->mlx, init->width, init->height, "fdf");
 		mlx_hook(init->win, 2, 0, key_hook, init);
+		mlx_expose_hook(init->win, expose_hook, init);
 		mlx_loop(init->mlx);
 	}
+	else
+		error();
 	return (0);
 }

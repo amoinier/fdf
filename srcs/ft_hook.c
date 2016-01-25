@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/24 18:24:39 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/25 16:35:58 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ static	void	keypad(int keycode, t_env *init)
 		init->movex += 5;
 	if (keycode == 123)
 		init->movex -= 5;
+	if (keycode == 116)
+		init->zoom++;
+	if (keycode == 121)
+		init->zoom--;
 }
 
 int				key_hook(int keycode, t_env *init)
@@ -58,11 +62,13 @@ int				key_hook(int keycode, t_env *init)
 		init->axez += 1;
 	if (keycode == 4)
 		init->axez -= 1;
-	if (keycode == 116)
-		init->zoom++;
-	if (keycode == 121)
-		init->zoom--;
 	ft_draw(init, 0xffffff);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 1, 1);
+	return (0);
+}
+
+int				expose_hook(t_env *init)
+{
+	ft_draw(init, 0xffffff);
 	return (0);
 }

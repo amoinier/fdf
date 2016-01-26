@@ -6,11 +6,11 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/26 16:10:31 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/26 19:17:46 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FDF_H
+#ifndef FDF_H
 # define FDF_H
 
 # include <stdlib.h>
@@ -26,63 +26,64 @@
 
 typedef struct	s_point
 {
-	int		x;
-	int		y;
-	int		z;
+	int			x;
+	int			y;
+	int			z;
 
-	int		px;
-	int		py;
+	int			px;
+	int			py;
 
-	int		sizeline;
-	int		sizecol;
+	int			sizeline;
+	int			sizecol;
+	int			col;
 }				t_point;
 
 typedef	struct	s_img
 {
-	void	*img;
-	char	*cimg;
-	int		bpp;
-	int		sizel;
-	int		endn;
+	void		*img;
+	char		*cimg;
+	int			bpp;
+	int			sizel;
+	int			endn;
 }				t_img;
 typedef	struct	s_env
 {
-	void	*mlx;
-	void	*win;
-	int		width;
-	int		height;
+	void		*mlx;
+	void		*win;
+	int			width;
+	int			height;
 
-	t_img	*img;
+	t_img		*img;
 
-	t_point	***point;
+	t_point		***point;
 
-	int		movex;
-	int		movey;
-	int		axex;
-	int		axey;
-	int		axez;
-	int		zoom;
+	int			movex;
+	int			movey;
+	int			axex;
+	int			axey;
+	int			axez;
+	int			zoom;
 }				t_env;
 
-char		**ft_read(char **av);
+char			**ft_read(char **av);
 
-int			ft_countbn(char *s);
-int			ft_countcara(char *str);
+int				ft_countbn(char *s);
+int				ft_countcara(char *str);
 
-int			mouse_hook(int button, int x, int y, t_env *init);
-int			key_hook(int keycode, t_env *init);
-int			expose_hook(t_env *init);
+int				mouse_hook(int button, int x, int y, t_env *init);
+int				key_hook(int keycode, t_env *init);
+int				expose_hook(t_env *init);
 
-t_point		*ft_pointnew(int x, int y, int z, int coln);
-t_point		***ft_createstruct(char **av);
-t_point		**init_point(char *line, int j);
+t_point			*ft_pointnew(int x, int y, int z, int coln);
+t_point			***ft_createstruct(char **av);
+t_point			**init_point(char *line, int j);
 
-void		draw(t_env *init, t_point ***tab);
-void		line(t_env *init, t_point **tab, int ij[2]);
-void		column(t_env *init, t_point ***tab, int ij[2]);
+void			draw(t_env *init, t_point ***tab);
+void			line(t_env *init, t_point **tab, int ij[2]);
+void			column(t_env *init, t_point ***tab, int ij[2]);
 
-void		pixel_put_image(t_env *init, int x, int y, int color);
+void			pixel_put_image(t_env *init, int x, int y, int color);
 
-int			error(void);
+int				error(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/25 17:01:37 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/26 18:04:40 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_point	*ft_pointnew(int x, int y, int z, int coln)
 	point->py = 0;
 	point->sizeline = 0;
 	point->sizecol = coln;
+	point->col = 0xffffff;
 	return (point);
 }
 

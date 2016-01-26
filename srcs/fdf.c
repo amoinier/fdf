@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/26 15:23:28 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/26 19:04:11 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	ft_initenv(t_env *init)
 {
 	init->width = 2000;
 	init->height = 2000;
-	init->movex = 0;
-	init->movey = 0;
-	init->axex = 0;
+	init->movex = 100;
+	init->movey = 100;
+	init->axex = -1;
 	init->axey = 0;
-	init->axez = 10;
-	init->zoom = 1;
+	init->axez = 5;
+	init->zoom = 4;
 	init->img = ft_init_img(init);
 }
 
@@ -59,8 +59,6 @@ void	pixel_put_image(t_env *init, int x, int y, int color)
 		color /= 256;
 		data[i + 2] = color % 256;
 		color /= 256;
-		//data[i + 3] = 0;
-		//color /= 256;
 	}
 }
 

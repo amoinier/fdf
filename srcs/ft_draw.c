@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/26 16:10:59 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/26 19:20:49 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static	void	draw1(t_env *init, int dxy[2], int xyi[2], int ij[2])
 	int	y;
 	int	col;
 
-col = 0xffffff;
+	col = init->point[ij[0]][ij[1]]->col;
 	x = init->point[ij[0]][ij[1]]->px;
 	y = init->point[ij[0]][ij[1]]->py;
 	i = 0;
@@ -48,7 +48,7 @@ static	void	draw2(t_env *init, int dxy[2], int xyi[2], int ij[2])
 	int	y;
 	int	col;
 
-	col = 0xffffff;
+	col = init->point[ij[0]][ij[1]]->col;
 	x = init->point[ij[0]][ij[1]]->px;
 	y = init->point[ij[0]][ij[1]]->py;
 	i = 0;
@@ -71,12 +71,9 @@ void			line(t_env *init, t_point **tab, int ij[2])
 {
 	int dxy[2];
 	int xyi[2];
-	int xy[2];
 	int	j;
 
 	j = ij[1] - 1;
-	xy[0] = tab[j]->px;
-	xy[1] = tab[j]->py;
 	dxy[0] = tab[j + 1]->px - tab[j]->px;
 	dxy[1] = tab[j + 1]->py - tab[j]->py;
 	if (dxy[0] > 0)
@@ -101,14 +98,11 @@ void			column(t_env *init, t_point ***tab, int ij[2])
 {
 	int dxy[2];
 	int xyi[2];
-	int xy[2];
 	int	i;
 	int	j;
 
 	i = ij[0];
 	j = ij[1];
-	xy[0] = tab[i][j]->px;
-	xy[1] = tab[i][j]->py;
 	dxy[0] = tab[i + 1][j]->px - tab[i][j]->px;
 	dxy[1] = tab[i + 1][j]->py - tab[i][j]->py;
 	if (dxy[0] > 0)

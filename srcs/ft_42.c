@@ -6,29 +6,29 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 21:12:40 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/26 15:14:12 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/26 16:10:48 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static	void	drawcol(t_env *init, t_point ***tab, int ij[2], int col)
+static	void	drawcol(t_env *init, t_point ***tab, int ij[2])
 {
 	ij[0]--;
-	column(init, tab, ij, col);
+	column(init, tab, ij);
 }
 
-static	void	drawline(t_env *init, t_point ***tab, int ij[2], int col)
+static	void	drawline(t_env *init, t_point ***tab, int ij[2])
 {
 	int	j;
 	int	i;
 
 	j = ij[1] - 1;
 	i = ij[0];
-	line(init, tab[i], ij, col);
+	line(init, tab[i], ij);
 }
 
-void			draw(t_env *init, t_point ***tab, int col)
+void			draw(t_env *init, t_point ***tab)
 {
 	int	i;
 	int	j;
@@ -47,9 +47,9 @@ void			draw(t_env *init, t_point ***tab, int col)
 			ij[0] = i;
 			ij[1] = j;
 			if (j > 0)
-				drawline(init, tab, ij, col);
+				drawline(init, tab, ij);
 			if (i > 0 && j < tab[i - 1][0]->sizecol)
-				drawcol(init, tab, ij, col);
+				drawcol(init, tab, ij);
 			j++;
 		}
 		i++;

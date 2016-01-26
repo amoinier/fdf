@@ -6,15 +6,15 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/25 16:35:58 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/26 16:11:18 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static	void	ft_draw(t_env *init, int col)
+static	void	ft_draw(t_env *init)
 {
-	draw(init, init->point, col);
+	draw(init, init->point);
 }
 
 static	void	ft_clear_img(t_env *init)
@@ -62,13 +62,13 @@ int				key_hook(int keycode, t_env *init)
 		init->axez += 1;
 	if (keycode == 4)
 		init->axez -= 1;
-	ft_draw(init, 0xffffff);
+	ft_draw(init);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 1, 1);
 	return (0);
 }
 
 int				expose_hook(t_env *init)
 {
-	ft_draw(init, 0xffffff);
+	ft_draw(init);
 	return (0);
 }

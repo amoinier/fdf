@@ -6,20 +6,22 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/26 16:06:38 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/26 16:10:59 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-static	void	draw1(t_env *init, int dxy[2], int xyi[2], int ij[2], int col)
+static	void	draw1(t_env *init, int dxy[2], int xyi[2], int ij[2])
 {
 	int	bre;
 	int	i;
 	int	x;
 	int	y;
+	int	col;
 
+col = 0xffffff;
 	x = init->point[ij[0]][ij[1]]->px;
 	y = init->point[ij[0]][ij[1]]->py;
 	i = 0;
@@ -38,13 +40,15 @@ static	void	draw1(t_env *init, int dxy[2], int xyi[2], int ij[2], int col)
 	}
 }
 
-static	void	draw2(t_env *init, int dxy[2], int xyi[2], int ij[2], int col)
+static	void	draw2(t_env *init, int dxy[2], int xyi[2], int ij[2])
 {
 	int	bre;
 	int	i;
 	int	x;
 	int	y;
+	int	col;
 
+	col = 0xffffff;
 	x = init->point[ij[0]][ij[1]]->px;
 	y = init->point[ij[0]][ij[1]]->py;
 	i = 0;
@@ -63,7 +67,7 @@ static	void	draw2(t_env *init, int dxy[2], int xyi[2], int ij[2], int col)
 	}
 }
 
-void			line(t_env *init, t_point **tab, int ij[2], int col)
+void			line(t_env *init, t_point **tab, int ij[2])
 {
 	int dxy[2];
 	int xyi[2];
@@ -87,13 +91,13 @@ void			line(t_env *init, t_point **tab, int ij[2], int col)
 	dxy[1] = ft_valabs(dxy[1]);
 	ij[1]--;
 	if (dxy[0] > dxy[1])
-		draw1(init, dxy, xyi, ij, col);
+		draw1(init, dxy, xyi, ij);
 	else
-		draw2(init, dxy, xyi, ij, col);
+		draw2(init, dxy, xyi, ij);
 	ij[1]++;
 }
 
-void			column(t_env *init, t_point ***tab, int ij[2], int col)
+void			column(t_env *init, t_point ***tab, int ij[2])
 {
 	int dxy[2];
 	int xyi[2];
@@ -117,7 +121,7 @@ void			column(t_env *init, t_point ***tab, int ij[2], int col)
 	dxy[0] = ft_valabs(dxy[0]);
 	dxy[1] = ft_valabs(dxy[1]);
 	if (dxy[0] > dxy[1])
-		draw1(init, dxy, xyi, ij, col);
+		draw1(init, dxy, xyi, ij);
 	else
-		draw2(init, dxy, xyi, ij, col);
+		draw2(init, dxy, xyi, ij);
 }

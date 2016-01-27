@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/27 17:41:00 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/27 21:15:07 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ typedef	struct	s_env
 	int			movex;
 	int			movey;
 	float		axex;
-	int			axey;
+	float		axey;
 	int			axez;
 	int			zoom;
 }				t_env;
 
 char			**ft_read(char **av);
+int				error(void);
 
 int				ft_countbn(char *s);
 int				ft_countcara(char *str);
@@ -81,9 +82,6 @@ t_point			**init_point(char *line, int j);
 void			draw(t_env *init, t_point ***tab);
 void			line(t_env *init, t_point **tab, int ij[2]);
 void			column(t_env *init, t_point ***tab, int ij[2]);
-
 void			pixel_put_image(t_env *init, int x, int y, int color);
-
-int				error(void);
 
 #endif

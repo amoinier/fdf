@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/27 20:18:51 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/27 21:15:41 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,25 @@ int				key_hook(int keycode, t_env *init)
 	if (keycode == 53)
 	{
 		mlx_destroy_image(init->mlx, init->img->img);
+		mlx_destroy_window(init->mlx, init->win);
 		exit(0);
 	}
 	ft_clear_img(init);
 	keypad(keycode, init);
 	if (keycode == 13)
-		init->axey--;
+		init->axey -= 0.1;
 	if (keycode == 1)
-		init->axey++;
+		init->axey += 0.1;
 	if (keycode == 0)
-		init->axex -= 1;
+		init->axex -= 0.1;
 	if (keycode == 2)
-		init->axex += 1;
+		init->axex += 0.1;
 	if (keycode == 16)
 		init->axez += 1;
 	if (keycode == 4)
 		init->axez -= 1;
 	ft_draw(init);
-	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 1, 1);
+	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
 	return (0);
 }
 

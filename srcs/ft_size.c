@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 16:31:07 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/25 19:01:13 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/27 20:30:09 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int		ft_countbn(char *s)
 	while (s[i])
 	{
 		if (s[i] == '\n')
-		{
 			nb++;
-		}
 		i++;
 	}
 	return (nb);

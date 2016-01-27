@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 16:40:37 by amoinier          #+#    #+#             */
-/*   Updated: 2015/12/01 17:26:17 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/27 15:23:38 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ char	*ft_strnew(size_t size)
 
 	i = 0;
 	size++;
-	str = (char*)malloc(sizeof(*str) * size);
-	if (!str)
+	if (!(str = (char*)malloc(sizeof(char) * (size))))
 		return (NULL);
 	while (i < size)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 13:00:28 by amoinier          #+#    #+#             */
-/*   Updated: 2015/12/02 10:42:02 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/27 15:12:07 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 		len = ft_strlen(s2);
 	else
 		len = n;
-	if (len < ft_strlen(s2))
-		return (NULL);
 	i = 0;
 	while (s1[i] && len + i < n + 1)
 	{

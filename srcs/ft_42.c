@@ -6,11 +6,12 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 21:12:40 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/26 19:20:50 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/27 13:48:08 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <math.h>
 
 static	void	drawcol(t_env *init, t_point ***tab, int ij[2])
 {
@@ -42,10 +43,10 @@ void			draw(t_env *init, t_point ***tab)
 		{
 			tab[i][j]->px = (init->axex + (tab[i][j]->x * init->zoom));
 			tab[i][j]->px -= ((tab[i][j]->z * init->axez) / 10) - init->movex;
-			tab[i][j]->px += init->axex * i;
+			tab[i][j]->px -= init->axex * sin(i);
 			tab[i][j]->py = (init->axey + (tab[i][j]->y * init->zoom));
 			tab[i][j]->py -= ((tab[i][j]->z * init->axez) / 10) - init->movey;
-			tab[i][j]->py += init->axey * j;
+			tab[i][j]->py += init->axey * cos(j);
 			ij[0] = i;
 			if (j > 0)
 				drawline(init, tab, ij);

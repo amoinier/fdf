@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 16:11:53 by amoinier          #+#    #+#             */
-/*   Updated: 2015/12/03 17:34:42 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 22:07:40 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	*ft_memalloc(size_t size)
 	tmp = zmem;
 	while (i <= size)
 	{
-		tmp[i++] = 0;
+		tmp[i] = 0;
+		i++;
 	}
 	return (zmem);
 }

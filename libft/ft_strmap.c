@@ -6,7 +6,7 @@
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 17:43:49 by amoinier          #+#    #+#             */
-/*   Updated: 2015/12/02 16:50:28 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/22 22:27:22 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 
 	if (!s || !f)
 		return (NULL);
-	str = (char *)malloc(sizeof(*str) * (ft_strlen(s) + 1));
-	if (!str)
+	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
 		return (NULL);
 	i = 0;
 	while (s[i])

@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amoinier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 18:05:13 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/22 22:28:09 by amoinier         ###   ########.fr       */
+/*   Created: 2015/12/19 16:54:47 by amoinier          #+#    #+#             */
+/*   Updated: 2016/01/27 16:02:39 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
-{
-	char	*str;
-	size_t	i;
+# define BUFF_SIZE 8
 
-	i = 0;
-	if (!s || len > ft_strlen(s) || start > ft_strlen(s))
-		return (NULL);
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (start + i < start + len)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
+# include "libft.h"
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+int		get_next_line(int const fd, char **line);
+
+#endif

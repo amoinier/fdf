@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 14:40:48 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/25 18:52:44 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/27 15:19:20 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ static	t_point		***ft_realloc(t_point ***p, int nline)
 {
 	t_point	***tmp;
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
 	if (!(tmp = (t_point ***)malloc(sizeof(tmp) * (nline + 1))))
 		error();
 	while (i != nline)
@@ -53,7 +51,7 @@ t_point				***ft_createstruct(char **av)
 	}
 	free(line);
 	line = NULL;
-	if (ret > 0)
+	if (ret > 0 || ret < 0)
 		error();
 	point[0][0]->sizeline = i;
 	return (point);

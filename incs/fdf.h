@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/26 19:17:46 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/27 17:41:00 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef	struct	s_env
 
 	int			movex;
 	int			movey;
-	int			axex;
+	float		axex;
 	int			axey;
 	int			axez;
 	int			zoom;

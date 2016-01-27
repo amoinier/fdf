@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/26 20:09:21 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/27 20:18:51 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int				key_hook(int keycode, t_env *init)
 	if (keycode == 1)
 		init->axey++;
 	if (keycode == 0)
-		init->axex--;
+		init->axex -= 1;
 	if (keycode == 2)
-		init->axex++;
+		init->axex += 1;
 	if (keycode == 16)
 		init->axez += 1;
 	if (keycode == 4)

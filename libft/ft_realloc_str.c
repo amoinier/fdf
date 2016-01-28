@@ -6,9 +6,11 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 15:16:08 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/27 15:23:14 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/28 15:31:38 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char		*ft_realloc_str(char *tab, int size)
 {

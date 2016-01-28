@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/27 20:28:17 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/01/28 15:22:44 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ t_point	**init_point(char *line, int j)
 
 	i = 0;
 	coln = ft_countcara(line);
-	if (!(s = ft_strsplit(line, 32)))
-		error();
+	s = ft_strsplit(line, 32);
 	if (!(point = (t_point **)malloc(sizeof(*point) * (coln + 1))))
 		error();
 	while (i < coln)

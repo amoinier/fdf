@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/01 17:38:02 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/01 20:11:13 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,19 @@ static	void	ft_clear_img(t_env *init)
 	int		size;
 
 	size = init->width * init->height * 4 - 1;
-	//init->img->cimg = ft_memset(init->img->cimg, 0, size);
 	ft_bzero(init->img->cimg, size);
 }
 
 static	void	keypad(int keycode, t_env *init)
 {
 	if (keycode == 126)
-		init->movey -= 5;
+		init->movey -= ((init->zoom + 1) * 2);
 	if (keycode == 125)
-		init->movey += 5;
+		init->movey += ((init->zoom + 1) * 2);
 	if (keycode == 124)
-		init->movex += 5;
+		init->movex += ((init->zoom + 1) * 2);
 	if (keycode == 123)
-		init->movex -= 5;
+		init->movex -= ((init->zoom + 1) * 2);
 	if (keycode == 116)
 		init->zoom++;
 	if (keycode == 121)

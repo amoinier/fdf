@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/01 17:10:12 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/01 18:52:07 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <sys/types.h>
 # include "libft.h"
 # include "get_next_line.h"
-
-# define BUFF_SIZE 2048
 
 typedef struct	s_point
 {

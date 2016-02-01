@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/01/28 15:43:09 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/01 17:41:08 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ t_img	*ft_init_img(t_env *init)
 
 void	ft_initenv(t_env *init)
 {
-	init->width = 2000;
-	init->height = 2000;
+	init->width = 2200;
+	init->height = 1300;
 	init->movex = 100;
 	init->movey = 100;
 	init->axex = 0;
 	init->axey = 0;
-	init->axez = 5;
+	init->axez = 2;
 	init->zoom = 4;
 	init->img = ft_init_img(init);
 }
@@ -49,8 +49,7 @@ void	pixel_put_image(t_env *init, int x, int y, int color)
 	bpp = init->img->bpp;
 	sizeline = init->img->sizel;
 	data = init->img->cimg;
-	if (x < init->width && x < init->height && y < init->width &&
-		y < init->height && x > 0 && y > 0)
+	if (x < init->width && y < init->height && x > 0 && y > 0)
 	{
 		i = x * (bpp / 8) + y * sizeline;
 		data[i] = color % 256;
@@ -73,6 +72,7 @@ int		main(int ac, char **av)
 		init->mlx = mlx_init();
 		ft_initenv(init);
 		init->win = mlx_new_window(init->mlx, init->width, init->height, "FDF");
+		init->lol = av[1];
 		mlx_hook(init->win, 2, 0, key_hook, init);
 		mlx_expose_hook(init->win, expose_hook, init);
 		mlx_loop(init->mlx);

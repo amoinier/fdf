@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/01 19:05:04 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/02 17:47:01 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ t_point	**init_point(char *line, int j)
 	while (i < coln)
 	{
 		point[i] = ft_pointnew(i, j, ft_atoi(s[i]), coln);
+		free(s[i]);
 		i++;
 	}
 	free(s);
-	s = NULL;
 	return (point);
 }

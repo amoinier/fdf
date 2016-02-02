@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/01 19:26:46 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/02 18:05:44 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_initenv(t_env *init)
 {
 	init->width = 2250;
 	init->height = 1250;
-	init->movex = 100;
-	init->movey = 100;
+	init->movex = 300;
+	init->movey = 300;
 	init->axex = 0;
 	init->axey = 0;
 	init->axez = 2;

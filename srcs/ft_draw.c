@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 16:17:39 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 19:35:04 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,13 @@ static	void	draw1(t_env *init, int dxy[2], int xyi[2], int ij[2])
 	int	i;
 	int	x;
 	int	y;
-	int	z;
 	int	col;
 
-	col = 0xffffff + init->point[ij[0]][ij[1]]->z * 100;
+	col = init->point[ij[0]][ij[1]]->col;
 	x = init->point[ij[0]][ij[1]]->px;
 	y = init->point[ij[0]][ij[1]]->py;
 	i = 0;
 	bre = dxy[0] / 2;
-	if (init->point[ij[0]][ij[1]]->z > init->point[ij[0]][ij[1] + 1]->z)
-	{
-		z = init->point[ij[0]][ij[1]]->z;
-		col = 0x00ff00;
-	}
-	else if (init->point[ij[0]][ij[1]]->z < init->point[ij[0]][ij[1] + 1]->z)
-	{
-		z = init->point[ij[0]][ij[1] + 1]->z;
-		col = 0x00ff00;
-	}
 	while (i < dxy[0])
 	{
 		x += xyi[0];
@@ -45,7 +34,6 @@ static	void	draw1(t_env *init, int dxy[2], int xyi[2], int ij[2])
 		{
 			bre -= dxy[0];
 			y += xyi[1];
-			col = 0x00ff00;
 		}
 		pixel_put_image(init, x, y, col);
 		i++;
@@ -58,24 +46,13 @@ static	void	draw2(t_env *init, int dxy[2], int xyi[2], int ij[2])
 	int	i;
 	int	x;
 	int	y;
-	int	z;
 	int	col;
 
-	col = 0xffffff + init->point[ij[0]][ij[1]]->z * 100;
+	col = init->point[ij[0]][ij[1]]->col;
 	x = init->point[ij[0]][ij[1]]->px;
 	y = init->point[ij[0]][ij[1]]->py;
 	i = 0;
 	bre = dxy[1] / 2;
-	if (init->point[ij[0]][ij[1]]->z > init->point[ij[0] + 1][ij[1]]->z)
-	{
-		z = init->point[ij[0]][ij[1]]->z;
-		col = 0x00ff00;
-	}
-	else if (init->point[ij[0]][ij[1]]->z < init->point[ij[0] + 1][ij[1]]->z)
-	{
-		z = init->point[ij[0] + 1][ij[1]]->z;
-		col = 0x00ff00;
-	}
 	while (i < dxy[1])
 	{
 		y += xyi[1];
@@ -84,7 +61,6 @@ static	void	draw2(t_env *init, int dxy[2], int xyi[2], int ij[2])
 		{
 			bre -= dxy[1];
 			x += xyi[0];
-			col = 0x00ff00;
 		}
 		pixel_put_image(init, x, y, col);
 		i++;

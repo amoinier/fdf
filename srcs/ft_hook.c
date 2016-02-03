@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 16:17:44 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 19:25:51 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ static	void	keypad(int keycode, t_env *init)
 		init->zoom--;
 }
 
+static	void	keycol(int keycode, t_env *init)
+{
+	if (keycode == 75)
+		init->col = 666;
+	if (keycode == 67)
+		init->col = 999;
+	if (keycode == 82)
+		init->col = 10;
+	if (keycode == 83)
+		init->col = 1;
+	if (keycode == 84)
+		init->col = 2;
+	if (keycode == 85)
+		init->col = 3;
+}
+
 int				key_hook(int keycode, t_env *init)
 {
 	if (keycode == 53)
@@ -46,6 +62,7 @@ int				key_hook(int keycode, t_env *init)
 	}
 	ft_clear_img(init);
 	keypad(keycode, init);
+	keycol(keycode, init);
 	if (keycode == 13)
 		init->axey -= 1;
 	if (keycode == 1)

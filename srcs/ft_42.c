@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 21:12:40 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 16:17:45 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 19:28:23 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void			draw(t_env *init, t_point ***tab)
 			tab[i][j]->py += (j * init->axey);
 			ij[0] = i;
 			ij[1] = j;
+			if (init->col == 666)
+				tab[i][j]->col = rand() % 0xffffff;
 			if (j > 0  && tab[i][j - 1]->px <= init->width)
 				drawline(init, tab, ij);
 			if (i > 0 && j < tab[i - 1][0]->sizecol &&

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:02:13 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/01 20:10:59 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 18:38:00 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	ft_str_win(t_env *init)
 	mlx_string_put(init->mlx, init->win, 132, 145, 0xffffff,
 		ft_itoa(init->axey));
 	mlx_string_put(init->mlx, init->win, 10, init->height - 50, 0xffffff,
-		"Press Echap to quit");
+		"Press ESC to quit");
 }

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/02 17:12:51 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 19:12:27 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef	struct	s_env
 	int			axez;
 	int			zoom;
 	char		*lol;
+	int			col;
 }				t_env;
 
 char			**ft_read(char **av);

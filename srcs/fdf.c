@@ -6,13 +6,13 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 16:17:40 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 19:34:19 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_img	*ft_init_img(t_env *init)
+static	t_img	*ft_init_img(t_env *init)
 {
 	t_img	*img;
 
@@ -26,7 +26,7 @@ t_img	*ft_init_img(t_env *init)
 	return (img);
 }
 
-void	ft_initenv(t_env *init)
+static	void	ft_initenv(t_env *init)
 {
 	init->width = 2250;
 	init->height = 1250;
@@ -36,10 +36,26 @@ void	ft_initenv(t_env *init)
 	init->axey = 0;
 	init->axez = 2;
 	init->zoom = 4;
+	init->col = 0;
 	init->img = ft_init_img(init);
 }
 
-void	pixel_put_image(t_env *init, int x, int y, int color)
+static	int		ft_col(t_env *init, int color)
+{
+	if (init->col == 10)
+		color = 0xffffff;
+	else if (init->col == 1)
+		color = 0xff0000;
+	else if (init->col == 2)
+		color = 0x00ff00;
+	else if (init->col == 3)
+		color = 0x0000ff;
+	else if (init->col == 999)
+		return (color);
+	return (color);
+}
+
+void			pixel_put_image(t_env *init, int x, int y, int color)
 {
 	int		i;
 	int		bpp;
@@ -49,6 +65,7 @@ void	pixel_put_image(t_env *init, int x, int y, int color)
 	bpp = init->img->bpp;
 	sizeline = init->img->sizel;
 	data = init->img->cimg;
+	color = ft_col(init, color);
 	if (x < init->width && y < init->height && x > 0 && y > 0)
 	{
 		i = x * (bpp / 8) + y * sizeline;
@@ -60,7 +77,7 @@ void	pixel_put_image(t_env *init, int x, int y, int color)
 	}
 }
 
-int		main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	t_env	*init;
 

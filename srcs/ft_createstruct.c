@@ -6,13 +6,13 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 16:17:42 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 19:34:41 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point	*ft_pointnew(int x, int y, int z, int coln)
+t_point		*ft_pointnew(int x, int y, int z, int coln)
 {
 	t_point	*point;
 
@@ -26,11 +26,11 @@ t_point	*ft_pointnew(int x, int y, int z, int coln)
 	point->sizeline = 0;
 	if (x == 0)
 		point->sizecol = coln;
-	point->col = 0xffffff;
+	point->col = 0x0000ff + z * 255255052555;
 	return (point);
 }
 
-int	verif_str(char *s)
+int			verif_str(char *s)
 {
 	int	i;
 	int	j;
@@ -49,7 +49,7 @@ int	verif_str(char *s)
 		return (1);
 }
 
-t_point	**init_point(char *line, int j)
+t_point		**init_point(char *line, int j)
 {
 	int		i;
 	int		coln;

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 19:25:51 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 21:15:42 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ static	void	keycol(int keycode, t_env *init)
 		init->col = 2;
 	if (keycode == 85)
 		init->col = 3;
+}
+
+int				mouse_hook(int button, int x, int y, t_env *init)
+{
+	button = 1;
+	init->col = bonus_mouse(x, y, init);
+	ft_clear_img(init);
+	draw(init, init->point);
+	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
+	return (0);
 }
 
 int				key_hook(int keycode, t_env *init)

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 19:34:19 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 21:16:30 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void			pixel_put_image(t_env *init, int x, int y, int color)
 	sizeline = init->img->sizel;
 	data = init->img->cimg;
 	color = ft_col(init, color);
+	if (init->col > 1000)
+		color = init->col;
 	if (x < init->width && y < init->height && x > 0 && y > 0)
 	{
 		i = x * (bpp / 8) + y * sizeline;
@@ -91,6 +93,7 @@ int				main(int ac, char **av)
 		init->win = mlx_new_window(init->mlx, init->width, init->height, "FDF");
 		init->lol = av[1];
 		mlx_hook(init->win, 2, 0, key_hook, init);
+		mlx_mouse_hook(init->win, mouse_hook, init);
 		mlx_expose_hook(init->win, expose_hook, init);
 		mlx_loop(init->mlx);
 	}

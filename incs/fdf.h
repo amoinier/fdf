@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 15:17:51 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 19:12:27 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 20:35:28 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,13 @@ typedef	struct	s_env
 char			**ft_read(char **av);
 int				error(void);
 
-int				ft_countbn(char *s);
 int				ft_countcara(char *str);
 
 int				mouse_hook(int button, int x, int y, t_env *init);
 int				key_hook(int keycode, t_env *init);
 int				expose_hook(t_env *init);
+
+int			bonus_mouse(int sx, int sy, t_env *init);
 
 t_point			*ft_pointnew(int x, int y, int z, int coln);
 t_point			***ft_createstruct(char **av);

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/02 17:47:01 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 16:17:42 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,25 @@ t_point	*ft_pointnew(int x, int y, int z, int coln)
 	return (point);
 }
 
+int	verif_str(char *s)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (s[i] >= 48 && s[i] <= 57)
+			j++;
+		i++;
+	}
+	if (j == 0 || i == 0)
+		return (0);
+	else
+		return (1);
+}
+
 t_point	**init_point(char *line, int j)
 {
 	int		i;
@@ -44,10 +63,14 @@ t_point	**init_point(char *line, int j)
 		error();
 	while (i < coln)
 	{
+		if (verif_str(s[i]) == 0)
+			error();
 		point[i] = ft_pointnew(i, j, ft_atoi(s[i]), coln);
 		free(s[i]);
 		i++;
 	}
+	if (i == 0)
+		error();
 	free(s);
 	return (point);
 }

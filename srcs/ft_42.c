@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 21:12:40 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/02 18:05:23 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/03 16:17:45 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,9 @@ void			draw(t_env *init, t_point ***tab)
 			tab[i][j]->py += (j * init->axey);
 			ij[0] = i;
 			ij[1] = j;
-			if (j > 0 && tab[i][j]->px > 0 - ft_valabs(init->zoom) &&
-				tab[i][j]->py > 0 - ft_valabs(init->zoom) &&
-				tab[i][j - 1]->px <= init->width)
+			if (j > 0  && tab[i][j - 1]->px <= init->width)
 				drawline(init, tab, ij);
 			if (i > 0 && j < tab[i - 1][0]->sizecol &&
-				tab[i][j]->px > 0 - ft_valabs(init->zoom) &&
-				tab[i][j]->py > 0 - ft_valabs(init->zoom) &&
 				tab[i - 1][j]->py <= init->height)
 				drawcol(init, tab, ij);
 			j++;

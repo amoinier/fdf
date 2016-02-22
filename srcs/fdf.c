@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:59:57 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 21:16:30 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/04 12:13:40 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,45 +38,6 @@ static	void	ft_initenv(t_env *init)
 	init->zoom = 4;
 	init->col = 0;
 	init->img = ft_init_img(init);
-}
-
-static	int		ft_col(t_env *init, int color)
-{
-	if (init->col == 10)
-		color = 0xffffff;
-	else if (init->col == 1)
-		color = 0xff0000;
-	else if (init->col == 2)
-		color = 0x00ff00;
-	else if (init->col == 3)
-		color = 0x0000ff;
-	else if (init->col == 999)
-		return (color);
-	return (color);
-}
-
-void			pixel_put_image(t_env *init, int x, int y, int color)
-{
-	int		i;
-	int		bpp;
-	int		sizeline;
-	char	*data;
-
-	bpp = init->img->bpp;
-	sizeline = init->img->sizel;
-	data = init->img->cimg;
-	color = ft_col(init, color);
-	if (init->col > 1000)
-		color = init->col;
-	if (x < init->width && y < init->height && x > 0 && y > 0)
-	{
-		i = x * (bpp / 8) + y * sizeline;
-		data[i] = color % 256;
-		color /= 256;
-		data[i + 1] = color % 256;
-		color /= 256;
-		data[i + 2] = color % 256;
-	}
 }
 
 int				main(int ac, char **av)

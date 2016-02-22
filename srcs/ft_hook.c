@@ -6,19 +6,11 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:37:22 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 21:15:42 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/04 12:12:47 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static	void	ft_clear_img(t_env *init)
-{
-	int		size;
-
-	size = init->width * init->height * 4 - 1;
-	ft_bzero(init->img->cimg, size);
-}
 
 static	void	keypad(int keycode, t_env *init)
 {
@@ -59,6 +51,7 @@ int				mouse_hook(int button, int x, int y, t_env *init)
 	ft_clear_img(init);
 	draw(init, init->point);
 	mlx_put_image_to_window(init->mlx, init->win, init->img->img, 0, 0);
+	ft_str_win(init);
 	return (0);
 }
 

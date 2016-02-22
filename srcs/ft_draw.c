@@ -6,12 +6,11 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/09 12:04:46 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 21:29:09 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/04 12:16:35 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 static	void	draw1(t_env *init, int dxy[2], int xyi[2], int ij[2])
 {
@@ -120,20 +119,17 @@ void			column(t_env *init, t_point ***tab, int ij[2])
 		draw2(init, dxy, xyi, ij);
 }
 
-#include <stdio.h>
-
-int			bonus_mouse(int sx, int sy, t_env *init)
+int				bonus_mouse(int sx, int sy, t_env *init)
 {
 	float	r;
 	float	g;
 	float	b;
-	float col;
+	float	col;
 
 	r = sx * (256 / (float)init->width);
 	g = (sx + sy) * (256 / (float)(init->width + init->height));
 	b = sy * (256 / (float)init->height);
 	g = 0;
-	printf("%d - %d - %d\n", (int)r, (int)g, (int)b);
 	col = ((int)r * 256 * 256 + (int)g * 256 + (int)b);
 	return (col);
 }

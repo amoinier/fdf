@@ -6,13 +6,13 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:42:35 by amoinier          #+#    #+#             */
-/*   Updated: 2016/02/03 19:40:35 by amoinier         ###   ########.fr       */
+/*   Updated: 2016/02/04 13:11:19 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point		*ft_pointnew(int x, int y, int z, int coln)
+static	t_point		*ft_pointnew(int x, int y, int z, int coln)
 {
 	t_point	*point;
 
@@ -30,7 +30,7 @@ t_point		*ft_pointnew(int x, int y, int z, int coln)
 	return (point);
 }
 
-int			verif_str(char *s)
+static	int			verif_str(char *s)
 {
 	int	i;
 	int	j;
@@ -40,16 +40,13 @@ int			verif_str(char *s)
 	while (s[i])
 	{
 		if (s[i] >= 48 && s[i] <= 57)
-			j++;
+			return (1);
 		i++;
 	}
-	if (j == 0 || i == 0)
-		return (0);
-	else
-		return (1);
+	return (0);
 }
 
-t_point		**init_point(char *line, int j)
+t_point				**init_point(char *line, int j)
 {
 	int		i;
 	int		coln;
